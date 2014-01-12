@@ -1,0 +1,5 @@
+/* line 1, ../sass/style-normal.scss */
+.wrapper, #header .inner, #banner, #footer {
+  padding-left: 2em;
+  padding-right: 2em;
+}

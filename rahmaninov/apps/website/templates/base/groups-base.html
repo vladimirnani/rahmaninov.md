@@ -1,0 +1,24 @@
+{% extends "base/left-sidebar.html" %}
+{% block title %}Творческие коллективы{% endblock %}
+
+{% block content %}
+  <div class="row" id="article">
+    <div class="4u" id="sidebar">
+      <section>
+        <header>
+          <h3>Коллективы:</h3>
+        </header>
+        <ul>
+          <li><a href="{% url "barocco" %}">Ансамбль "Барокко"</a></li>
+          <li><a href="#">Камерный ансамбль</a></li>
+          <li><a href="#">Духовой оркестр</a></li>
+        </ul>
+      </section>
+    </div>
+    <div class="8u skel-cell-mainContent" id="content">
+      <article id="main">
+        {% block article_content %} {% endblock %}
+      </article>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "base/groups-base.html" %}
+
+{% block article_content %}
+  <section>
+    <header>
+      <h2>Ансамбль Барокко</h2>
+    </header>
+    <figure title="Ансамбль Барокко">
+      <img alt="Ансамбль Барокко" src="{{ STATIC_URL }}img/articles/barocco.jpg"/>
+    </figure>
+    <p>Ансамбль <span class="blue">"Барокко"</span> -
+      лауреат международного конкурса им. С.&nbsp;Прокофьева в Москве, участник
+      международных фестивалей во Франции, Венгрии, Румынии, Италии, Дании,
+      Австрии, много выступает на различных концертных сценах столицы. </p>
+
+    <p class="clearfix">Ансамбль был создан в 1994
+      году под руководством талантливого педагога <span class="blue">"Maestru în Arte"</span>
+      <a href="{% url "teacher" 56 %}">А.&nbsp;Стрезевой</a>, которая является
+      художественным руководителем, дирижером и автором большинства переложений
+      произведений, составляющих его репертуар. </p>
+    <header>
+      <h3>Коллектив ансамбля:</h3>
+      </header>
+        <ul>
+          {% for member in object_list %}
+            <li>
+              {% if member.pupil.laureate.picture %}
+                <a href="{% url "laureate" member.pupil.id %}">{{ member }}</a>
+              {% else %}
+                {{ member }}
+              {% endif %}
+              <span class="blue">({{ member.instrument }})</span>
+            </li>
+          {% endfor %}
+        </ul>
+  </section>
+{% endblock %}

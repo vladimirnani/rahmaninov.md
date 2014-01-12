@@ -1,0 +1,69 @@
+{% extends "base/right-sidebar.html" %}
+
+{% block title %}{{ teacher }}{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <header>
+      <h2>{{ teacher }}</h2>
+    </header>
+  </div>
+
+  <div class="row" id="teacher">
+    <div class="6u">
+      {% if teacher.picture %}
+        <figure class="image featured" title="{{ teacher }}">
+          <img alt="{{ teacher }}"
+               src="{{ MEDIA_URL }}{{ teacher.picture }}"/>
+        </figure>
+      {% endif %}
+    </div>
+    <div class="6u">
+      <ul>
+        {% if teacher.honour %}
+          <li>
+            <span class="red">
+              {{ teacher.honour }}.
+            </span>
+          </li>
+        {% endif %}
+
+        {% if teacher.role %}
+          <li>{{ teacher.role }}.</li>
+        {% endif %}
+
+        {% if teacher.has_subjects %}
+          <li>Преподаватель.</li>
+        {% endif %}
+
+        {% if teacher.activity %}
+          <li>{{ teacher.activity }}.</li>
+        {% endif %}
+
+        {% if teacher.category %}
+          <li>{{ teacher.get_category_display }} категория.</li>
+        {% endif %}
+
+        {% if teacher.has_subjects %}
+          <li>Дисциплин{{ teacher.subjects.count|pluralize:"а,ы" }}:
+            <ul>
+              {% for subject in teacher.subjects.all %}
+                <li><strong>
+                  {{ subject }}{% if not forloop.last %},{% endif %}
+                </strong>
+                </li>
+              {% endfor %}
+            </ul>
+          </li>
+        {% endif %}
+        {% if teacher.from_year %}
+          <li>Работает в лицее с <span class="blue">{{ teacher.from_year }}</span> года.
+          </li>
+        {% endif %}
+      </ul>
+      <figure class="image">
+        <img src="{{ STATIC_URL }}img/fermata.png"/>
+      </figure>
+    </div>
+  </div>
+{% endblock %}

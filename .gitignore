@@ -1,0 +1,13 @@
+venv/
+*.pyc
+*.scssc
+*.sublime-workspace
+*.sublime-project
+*.sublime-workspace
+*.sublime-project
+/.idea/workspace.xml
+.env
+secrets-heroku.bat
+secrets-win.bat
+
+/rachmaninov-backup.bat

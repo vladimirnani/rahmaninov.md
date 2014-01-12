@@ -1,0 +1,15 @@
+<table class="date">
+	<tbody>
+		<tr>
+			<td class="day green">{{ date|date:"d" }}</td>
+			<td class="month blue">
+				<ul>
+					<li>{{ date|date:"M" }}</li>
+					<li class="time green">{{ date|date:"H" }}:{{ date|date:"i" }}</li>
+				</ul>
+			</td>
+			<!-- <td class="year blue">{{ date|date:"y" }}</td>	 -->
+		</tr>								  
+	</tbody>	
+</table>	
+	

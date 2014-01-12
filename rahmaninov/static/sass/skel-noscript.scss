@@ -1,0 +1,154 @@
+/* Resets (http://meyerweb.com/eric/tools/css/reset/ | v2.0 | 20110126 | License: none (public domain)) */
+
+@import "partials/cells";
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote {
+    &:before, &:after {
+        content: '';
+        content: none;
+    }
+}
+
+q {
+    &:before, &:after {
+        content: '';
+        content: none;
+    }
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+body {
+    -webkit-text-size-adjust: none;
+}
+
+/* Box Model */
+
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    &:before, &:after {
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -o-box-sizing: border-box;
+        -ms-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+}
+
+/* Container */
+
+body {
+    min-width: 1200px;
+}
+
+.container {
+    width: 1200px;
+    margin: 0 auto;
+    &.small {
+        width: 900px;
+    }
+    &.big {
+        width: 100%;
+        max-width: 1500px;
+        min-width: 1200px;
+    }
+}
+
+.row {
+    > * {
+        padding: 48px 0 0 48px;
+        float: left;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -o-box-sizing: border-box;
+        -ms-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    + .row > * {
+        padding-top: 48px;
+    }
+    margin-left: -48px;
+    &:after {
+        content: '';
+        display: block;
+        clear: both;
+        height: 0;
+    }
+    &:first-child > *, > * {
+        padding-top: 0;
+    }
+    &.flush {
+        margin-left: 0;
+        > * {
+            padding: 0 !important;
+        }
+    }
+    &.quarter {
+        > * {
+            padding: 12px 0 0 12px;
+        }
+        + .row.quarter > * {
+            padding-top: 12px;
+        }
+        margin-left: -12px;
+    }
+    &.half {
+        > * {
+            padding: 24px 0 0 24px;
+        }
+        + .row.half > * {
+            padding-top: 24px;
+        }
+        margin-left: -24px;
+    }
+    &.oneandhalf {
+        > * {
+            padding: 72px 0 0 72px;
+        }
+        + .row.oneandhalf > * {
+            padding-top: 72px;
+        }
+        margin-left: -72px;
+    }
+    &.double {
+        > * {
+            padding: 96px 0 0 96px;
+        }
+        + .row.double > * {
+            padding-top: 96px;
+        }
+        margin-left: -96px;
+    }
+}

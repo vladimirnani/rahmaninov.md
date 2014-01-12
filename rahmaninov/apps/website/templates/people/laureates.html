@@ -1,0 +1,56 @@
+﻿{% extends "base/no-sidebar.html" %}
+{% block title %}Лауреаты{% endblock %}
+{% load thumbnail %}
+
+{% block links %}
+  <link href="{{ STATIC_URL }}css/image-grid.css"
+        rel="stylesheet"
+        type="text/css"
+        media="all">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
+  <script src="{{ STATIC_URL }}js/map-laureates.js"></script>
+{% endblock %}
+
+{% block content %}
+  <section class="container">
+    <article id="main" class="special">
+      <header>
+        <h2>Лауреаты</h2>
+        <span class="byline">
+         Мы завоёвываем мир!
+        </span>
+      </header>
+      <figure class="Flexible-container">
+        <div id="map-canvas"></div>
+      </figure>
+      <section class="row">
+        {% regroup laureates by pupil.subject as laureates_list %}
+        {% for item in laureates_list %}
+          <div id="teachers"
+               class="group"
+               style="float: left; margin-right: 50px;">
+            <h3>{{ item.grouper }}</h3>
+            {% for laureate in item.list %}
+              <a href="{% url "laureate" laureate.pupil_id %}"
+                 class="teacher {% if laureate.this_year_laureate %}new_laureate{% endif %}">
+                {% thumbnail laureate.picture "148x148" crop="left" as image %}
+                  <img src="{{ image.url }}" >
+                {% endthumbnail %}
+                <div class="teacher_popout_info">
+                  <ul>
+                    <li>{{ laureate.pupil.last_name }}</li>
+                    <li>{{ laureate.pupil.first_name }}</li>
+                    {% if laureate.this_year_laureate %}
+                      <li><span>Лауреат {% now "Y" %}</span></li>
+                    {% endif %}
+                  </ul>
+                </div>
+              </a>
+            {% endfor %}
+          </div>
+        {% endfor %}
+      </section>
+    </article>
+  </section>
+{% endblock %}

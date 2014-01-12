@@ -1,0 +1,9 @@
+/* line 3, ../sass/style-noscript.scss */
+.homepage #header:after, #nav > ul > li > ul {
+  display: none;
+}
+
+/* line 7, ../sass/style-noscript.scss */
+.carousel {
+  overflow-x: scroll;
+}

@@ -1,0 +1,9 @@
+#header {}
+
+.homepage #header:after, #nav > ul > li > ul {
+    display: none;
+}
+
+.carousel {
+    overflow-x: scroll;
+}

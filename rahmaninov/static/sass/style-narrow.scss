@@ -1,0 +1,25 @@
+body, input, textarea, select {
+    font-size: 13pt;
+    line-height: 1.65em;
+}
+
+.tweet {
+    text-align: center;
+}
+
+.timestamp {
+    display: block;
+    text-align: center;
+}
+
+#footer {
+    padding: 4em 2em 4em 2em;
+}
+
+.carousel {
+    padding: 1.25em 0 1.25em 0;
+    article {
+        width: 18em;
+        margin: 0 1em 0 0;
+    }
+}

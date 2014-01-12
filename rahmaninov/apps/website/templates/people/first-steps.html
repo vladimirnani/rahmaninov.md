@@ -1,0 +1,32 @@
+{% extends "base/no-sidebar.html" %}
+{% load thumbnail %}
+
+{% block title %}Первые успехи{% endblock %}
+{% block links %}
+  <link href="{{ STATIC_URL }}css/image-grid.css" rel="stylesheet" media="all">
+{% endblock %}
+{% block content %}
+  <section class="container" id="laureates">
+    <article id="main">
+      <header>
+        <h2>Первые успехи</h2>
+      </header>
+      <div id="teachers" class="group">
+        {% for laureate in laureates %}
+          <a href="{% url "laureate" laureate.pupil_id %}" class="teacher">
+            {% thumbnail laureate.picture "148x148" crop="left" as image %}
+              <img src="{{ image.url }}" alt="{{ laureate }}">
+            {% endthumbnail %}
+
+            <div class="teacher_popout_info">
+              <ul>
+                <li>{{ laureate.pupil.last_name }}</li>
+                <li>{{ laureate.pupil.first_name }}</li>
+              </ul>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+    </article>
+  </section>
+{% endblock %}

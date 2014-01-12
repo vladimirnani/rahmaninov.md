@@ -1,0 +1,31 @@
+/* line 1, ../sass/style-narrower.scss */
+body, input, textarea, select {
+  font-size: 13pt;
+  line-height: 1.65em;
+}
+
+/* line 6, ../sass/style-narrow.scss */
+.tweet {
+  text-align: center;
+}
+
+/* line 10, ../sass/style-narrow.scss */
+.timestamp {
+  display: block;
+  text-align: center;
+}
+
+/* line 15, ../sass/style-narrow.scss */
+#footer {
+  padding: 4em 2em 4em 2em;
+}
+
+/* line 19, ../sass/style-narrow.scss */
+.carousel {
+  padding: 1.25em 0 1.25em 0;
+}
+/* line 21, ../sass/style-narrow.scss */
+.carousel article {
+  width: 18em;
+  margin: 0 1em 0 0;
+}

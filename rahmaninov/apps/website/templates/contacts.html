@@ -1,0 +1,47 @@
+{% extends "base/left-sidebar.html" %}
+{% block title %}Контакты{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="4u" id="sidebar">
+      <hr class="first"/>
+      <section>
+        <header>
+          <h3><a href="{% url "admission" %}">Поступление</a></h3>
+        </header>
+        <p>
+          Наш лицей ежегодно проводит набор детей в первый класс. Если у вашего
+          ребёнка проявляется интерес к музыке и он обладает подходящими данными
+          вы можете подать заявление на поступление в приёмную комиссию.</p>
+        <footer>
+          <a href="{% url "admission" %}" class="button">Узнать больше</a>
+        </footer>
+      </section>
+    </div>
+    <div class="8u skel-cell-mainContent" id="content">
+      <article id="main">
+        <header>
+          <h2><a href="#">Контакты</a></h2>
+        </header>
+
+        <section>
+          <ul>
+            <li>Email: <a href="mailto:liceu-rahmaninov@rambler.ru">liceu-rahmaninov@rambler.ru</a>
+            </li>
+            <li>Телефон: <strong class="red">+373 22 274118</strong></li>
+          </ul>
+        </section>
+
+        <section>
+          <header>
+            <h3>Кишинёв, ул. М Когэлничану 39 (бывшая ул. Пирогова)</h3>
+          </header>
+          <figure class="image featured Flexible-container">
+            <iframe src="https://mapsengine.google.com/map/embed?mid=zLnicbLKm1PU.kiHy0Plj2Sac" width="640" height="480"></iframe>
+          </figure>
+        </section>
+
+      </article>
+    </div>
+  </div>
+{% endblock %}

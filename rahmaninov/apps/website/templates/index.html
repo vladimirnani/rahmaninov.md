@@ -1,0 +1,236 @@
+{% extends "base/base.html" %}
+{% block title %}Лицей Рахманинова{% endblock %}
+{% load render_date %}
+{% block page_type %}homepage{% endblock %}
+
+{% block scripts %}
+
+  <script type="text/javascript">
+    jQuery(function () {
+      var eventsInline = [
+        {% for event in events_list %}
+          { "date": "{{ event.datetime|date:"U" }}000", "title": "{{ event.title }}" },
+        {% endfor %}
+      ];
+
+      $("#eventCalendarInline").eventCalendar({
+        jsonData: eventsInline,
+        cacheJson: false,
+        monthNames: [ "Январь" , "Февраль" , "Март" , "Апрель" , "Май" , "Июнь" , "Июль" , "Август" , "Сентябрь" , "Октябрь" , "Ноябрь" , "Декабрь" ],
+        dayNames: ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота" ],
+        dayNamesShort: ["Вс" , "Пн", "Вт", "Ср", "Чт", "Пт", "Сб" ],
+        startWeekOnMonday: true,
+        txt_noEvents: "Нет событий",
+        txt_SpecificEvents_prev: "",
+        txt_SpecificEvents_after: "события:",
+        txt_next: "siguiente",
+        txt_prev: "anterior",
+        txt_NextEvents: "Будущие события:",
+        txt_GoToEventUrl: "Ir al evento",
+      });
+
+    });
+  </script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      // Hiding all the testimonials, except for the first one.
+      $('#testimonials li').hide().eq(0).show();
+      // A self executing function that loops through the testimonials:
+      (function showNextTestimonial() {
+        // Wait for 7.5 seconds and hide the currently visible testimonial:
+        $('#testimonials li:visible').delay(8000).fadeOut('slow', function () {
+          // Move it to the back:
+          $(this).appendTo('#testimonials ul');
+          // Show the next testimonial:
+          $('#testimonials li:first').fadeIn('slow', function () {
+            // Call the function again:
+            showNextTestimonial();
+          });
+        });
+      })();
+    });
+  </script>
+{% endblock %}
+
+{% block header %}
+  <header>
+    <h1><a href="#" id="logo">Музыкальный лицей<br> им.
+      С.&nbsp;Рахманинова</a></h1>
+    <hr/>
+    <article id="testimonials">
+      <ul>
+        <li>
+          <span class="byline">“Музыка - <br>посредница между жизнью ума и жизнью чувств.”</span>
+          <span class="author">Людвиг Бетховен</span>
+        </li>
+        <li>
+          <span class="byline">“Музыка - <br>это разум, воплощенный в прекрасных звуках.”</span>
+          <span class="author">Иван Тургенев</span>
+        </li>
+        <li>
+          <span class="byline">“Музыка - <br>универсальный язык человечества.”</span>
+          <span class="author">Генри Лонгфелло</span>
+        </li>
+        <li>
+            <span class="byline">
+              “Только величайшее искусство - <br>музыка - способно коснуться
+              глубин души.” </span>
+          <span class="author">Максим Горький</span>
+        </li>
+        <li>
+            <span class="byline">
+              “Любое искусство стремится к тому, <br>чтобы стать музыкой.” </span>
+          <span class="author">Уолтер Патер</span>
+        </li>
+        <li>
+            <span class="byline">
+              “Музыка,<br> не упоминая ни о чем, может сказать все.” </span>
+          <span class="author">Илья Эренбург</span>
+        </li>
+        <li>
+            <span class="byline">
+              “Без музыки <br>жизнь была бы ошибкой.” </span>
+          <span class="author">Фридрих Ницше</span>
+        </li>
+      </ul>
+    </article>
+  </header>
+  <footer>
+    <a href="#banner" class="button circled scrolly">Начало</a>
+  </footer>
+{% endblock %}
+
+
+{% block base_content %}
+  <!-- Banner -->
+  <div id="banner">
+    <h2>Добро пожаловать на сайт Республиканского Музыкального<br>
+      лицея-интерната
+      им. <strong>С.&nbsp;Рахманинова</strong>. </h2>
+  </div>
+
+  <!-- Carousel -->
+  <div class="carousel" id="gallery">
+    <div class="reel">
+      {% for collection in collections %}
+        <article>
+          <a href="{% url "photoset" collection.id %}" class="image featured">
+            <img src="{{ collection.cover_photo }}"
+                 alt="{{ collection.name }}"/>
+          </a>
+          <header
+              {% if collection.name|length < 22 %}
+                class="two_lines"
+              {% endif %}>
+            <h3><a href="{% url "photoset" collection.id %}">{{ collection }}</a>
+            </h3>
+          </header>
+          <p>{{ collection.description }}</p>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Main -->
+  <div class="wrapper style2">
+
+    <article id="main" class="container special">
+      <a href="{% url "history" %}" class="image featured">
+        <img src="{{ STATIC_URL }}img/main/pic06.jpg" alt="История лицея"/>
+      </a>
+      <header>
+        <h2><a href="{% url "history" %}">История лицея</a></h2>
+						<span class="byline">
+							Небольшой исторический экскурс в прошлое, к истокам образования лицея значительно повышает юбилейную цифру - 70 лет!
+						</span>
+      </header>
+      <p>
+        В 1940 году при Молдавской Государственной консерватории им. Г.
+        Музическу
+        была открыта Музыкальная школа-десятилетка, позже названная именем
+        композитора Е. Коки. Мастерство и высокая квалификация педагогического
+        состава быстро снискало славу этой школе, воспитавшей более 1000
+        первоклассных музыкантов-исполнителей, композиторов и других,
+        впоследствии
+        известных деятелей искусства. Среди них были такие личности, как С.
+        Лункевич, руководивший оркестром "Флуераш"; композитор К. Руснак,
+        органистка и педагог, "Maestru în Arte" А. Стрезева, исполнители и
+        педагоги Академии музыки, театра и пластических искусств (АМТАР) А.
+        Лапикус и Ю. Махович, там же преподают в настоящее время ректор В.
+        Мельник, проректор В. Аксенов. Выпускниками десятилетки являются также
+        педагог и директор музыкального лицея им. Ч. Порумбеску "Maestru în
+        Arte"
+        Г. Буйновская, директор Национальной филармонии С. Бивол, директор
+        Театра
+        оперы и балета В. Шейкану, заместитель директора лицея им. С.
+        Рахманинова
+        А. Попович и многие другие. </p>
+      <footer>
+        <a href="{% url "history" %}" class="button">Читать далее</a>
+      </footer>
+    </article>
+
+  </div>
+
+  <!-- Features -->
+  <div class="wrapper style1">
+
+    <section id="features" class="container special">
+      <header>
+        <h2>Учащиеся</h2>
+        <span class="byline">С юных лет лицеисты имеют возможность выступать и показывать свое мастерство на лучших сценах столицы, республики и за ее пределами.</span>
+      </header>
+      <div class="row">
+        <article class="4u special">
+          <a href="{% url "graduates" %}" class="image featured">
+            <img src="{{ STATIC_URL }}img/main/pic07.jpg" alt="Выпускники"/>
+          </a>
+          <header>
+            <h3><a href="{% url "graduates" %}">Выпускники</a></h3>
+          </header>
+          <p>
+            Выпускники и бывшие учащиеся лицея продолжают свое образование в
+            Академии Музыки Театра и Изобразительных Исскуств РМ, в
+            консерваториях
+            и колледжах разных стран мира. </p>
+        </article>
+        <article class="4u special">
+          <a href="{% url "barocco" %}" class="image featured">
+            <img src="{{ STATIC_URL }}img/main/pic08.jpg"
+                 alt="Творческие Коллективы"/>
+          </a>
+          <header>
+            <h3><a href="{% url "barocco" %}">Творческие Коллективы</a></h3>
+          </header>
+          <p>
+            Большой известностью пользуются творческие коллективы: камерный
+            ансамбль, духовой оркестр и визитная карточка лицея - ансамбль
+            "Барокко". </p>
+        </article>
+        <article class="4u special">
+          <a href="{% url "laureates" %}" class="image featured">
+            <img src="{{ STATIC_URL }}img/main/pic09.jpg" alt="Достижения"/>
+          </a>
+          <header>
+            <h3><a href="{% url "laureates" %}">Достижения</a></h3>
+          </header>
+          <p>
+            Педагоги постоянно готовят учащихся к исполнительским конкурсам и
+            внеклассным выступлениям. Традиционный результат - дипломы различных
+            международных и национальных конкурсо, ежегодно пополняющие список
+            лицейских достижений. </p>
+        </article>
+      </div>
+    </section>
+  </div>
+
+  <!-- Calendar -->
+  <div class="wrapper style1">
+    <section id="calendar" class="container special">
+      <header>
+        <h2><a href="#calendar">Календарь лицея</a></h2>
+      </header>
+      <div id="eventCalendarInline"></div>
+    </section>
+  </div>
+{% endblock %}

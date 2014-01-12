@@ -1,0 +1,134 @@
+/* line 1, ../sass/image-grid.scss */
+.group:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 9, ../sass/image-grid.scss */
+div#teachers {
+  padding: 0.5em 0 1em 0;
+}
+
+/* line 13, ../sass/image-grid.scss */
+div#teachers a.teacher {
+  position: relative;
+  display: block;
+  float: left;
+  padding: 0;
+  margin: 0 3px 5px 2px;
+  height: 148px;
+}
+
+/* line 22, ../sass/image-grid.scss */
+div#teachers a.teacher:hover {
+  z-index: 1000;
+}
+
+/* line 26, ../sass/image-grid.scss */
+div#teachers a.teacher:hover img {
+  z-index: 2000;
+  -webkit-transform: scale(1.2) rotate(3deg);
+  -moz-transform: scale(1.2) rotate(3deg);
+  -o-transform: scale(1.2) rotate(3deg);
+  -ms-transform: scale(1.2) rotate(3deg);
+  -moz-box-shadow: 0 0 24px rgba(20, 20, 20, 0.65);
+  -webkit-box-shadow: 0 0 24px rgba(20, 20, 20, 0.65);
+  box-shadow: 0 0 24px rgba(20, 20, 20, 0.65);
+  -webkit-backface-visibility: hidden;
+}
+
+/* line 38, ../sass/image-grid.scss */
+div#teachers a.teacher:hover:nth-child(2n) img {
+  -webkit-transform: scale(1.2) rotate(-2deg);
+  -moz-transform: scale(1.2) rotate(-2deg);
+  -o-transform: scale(1.2) rotate(-2deg);
+  -ms-transform: scale(1.2) rotate(-2deg);
+}
+
+/* line 45, ../sass/image-grid.scss */
+div#teachers a.teacher:hover:nth-child(3n) img {
+  -webkit-transform: scale(1.2) rotate(1deg);
+  -moz-transform: scale(1.2) rotate(1deg);
+  -o-transform: scale(1.2) rotate(1deg);
+  -ms-transform: scale(1.2) rotate(1deg);
+}
+
+/* line 52, ../sass/image-grid.scss */
+div#teachers a.teacher img {
+  -moz-box-shadow: 0 0 24px rgba(20, 20, 20, 0.45);
+  -webkit-box-shadow: 0 0 24px rgba(20, 20, 20, 0.45);
+  box-shadow: 0 0 24px rgba(20, 20, 20, 0.45);
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  position: relative;
+  -webkit-backface-visibility: hidden;
+}
+
+/* line 63, ../sass/image-grid.scss */
+div#teachers div.teacher_popout_info {
+  display: none;
+  position: absolute;
+  left: -10px;
+  top: 150px;
+  padding: 10px;
+  width: 170px;
+  background-color: rgba(227, 239, 255, 0.95);
+  border: 1px solid rgba(152, 162, 179, 0.8);
+  z-index: 1900;
+  -moz-box-shadow: 0 0 24px rgba(20, 20, 20, 0.45);
+  -webkit-box-shadow: 0 0 24px rgba(20, 20, 20, 0.45);
+  box-shadow: 0 0 24px rgba(20, 20, 20, 0.45);
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+}
+/* line 64, ../sass/image-grid.scss */
+div#teachers div.teacher_popout_info ul {
+  list-style: none;
+  margin-bottom: 0;
+}
+/* line 68, ../sass/image-grid.scss */
+div#teachers div.teacher_popout_info span {
+  font-weight: 300;
+  color: #4b5266;
+  color: #4b5266;
+  text-shadow: 0 1px 0 #E8FCFF;
+  background-color: #ffff9D;
+  padding: 1px 4px;
+  border-top: 1px solid #F8D883;
+  border-bottom: 1px solid #F8D883;
+}
+
+/* line 95, ../sass/image-grid.scss */
+div#teachers a.teacher div.teacher_popout_info h2, div#teachers a.teacher:visited div.teacher_popout_info h2 {
+  font-size: 1.1em;
+  line-height: 18px;
+  color: #4b5266;
+  color: #4b5266;
+  text-shadow: 0 1px 0 #E8FCFF;
+  font-weight: 300;
+}
+
+/* line 104, ../sass/image-grid.scss */
+div#teachers a.teacher {
+  text-decoration: none;
+}
+
+/* line 108, ../sass/image-grid.scss */
+div#teachers a.teacher:hover div.teacher_popout_info {
+  display: block;
+}
+
+/* line 112, ../sass/image-grid.scss */
+div#teachers .teacher_popout_info ul {
+  list-style-type: circle;
+}
+
+/* line 116, ../sass/image-grid.scss */
+.teacher img {
+  height: 148px;
+}

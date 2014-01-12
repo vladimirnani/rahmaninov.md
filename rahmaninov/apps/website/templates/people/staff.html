@@ -1,0 +1,75 @@
+{% extends "base/right-sidebar.html" %}
+{% load thumbnail %}
+
+{% block title %}Коллектив{% endblock %}
+{% block links %}
+  <link href="{{ STATIC_URL }}css/image-grid.css"
+        rel="stylesheet"
+        type="text/css"
+        media="all">
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="8u skel-cell-mainContent" id="content">
+      <article id="main">
+        <header>
+          <h2><a href="#">Коллектив лицея</a></h2>
+									<span class="byline">
+										Все достижения лицея - это результат слаженной работы замечательного педагогического коллектива.
+									</span>
+        </header>
+        {% for type, teachers in object_list.items %}
+          <div id="category{{ forloop.counter }}">
+            <section>
+              <header>
+                <h3>{{ type }}</h3>
+              </header>
+              <div id="teachers" class="group">
+                {% for teacher in teachers %}
+                  {% if teacher.picture %}
+                    <a href="{% url "teacher" teacher.id %}" class="teacher">
+                     {% thumbnail teacher.picture "148x148" crop="center" as image %}
+                       <img src="{{ image.url }}" alt="{{ teacher }}">
+                     {% endthumbnail %}
+                      <div class="teacher_popout_info">
+                        <ul>
+                          <li>{{ teacher.last_name }}</li>
+                          <li>{{ teacher.first_name }}</li>
+                          <li>{{ teacher.patronymic }}</li>
+                        </ul>
+                      </div>
+                    </a>
+                  {% endif %}
+                {% endfor %}
+              </div>
+              <h4>А также:</h4>
+              <ul class="threecolumns">
+                {% for teacher in teachers %}
+                  {% if not teacher.picture %}
+                    <li><a href="{% url "teacher" teacher.id %}">{{ teacher }}</a>
+                    </li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            </section>
+          </div>
+        {% endfor %}
+      </article>
+    </div>
+    <div class="4u" id="sidebar">
+      <hr class="first"/>
+      <section>
+        <header>
+          <h3><a href="#">Отделы</a></h3>
+        </header>
+        <ul class="block clearfix">
+          {% for type in object_list.keys %}
+            <li><a href="#category{{ forloop.counter }}"
+                   class="scrolly">{{ type }}</a></li>
+          {% endfor %}
+        </ul>
+      </section>
+    </div>
+  </div>
+{% endblock %}

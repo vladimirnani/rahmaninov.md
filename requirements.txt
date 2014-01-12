@@ -1,0 +1,17 @@
+# Requirements to deploy this code.
+
+Django==1.6.1
+South
+boto==2.8.0
+distribute==0.6.34
+django-mptt==0.5.2
+html5lib==0.95
+Pillow
+psycopg2
+django-jsonify
+gunicorn==0.17.4
+django-twitter-tag
+python-memcached
+newrelic==2.8.0.7
+django-pylibmc-sasl==0.2.4
+sorl-thumbnail

@@ -1,0 +1,229 @@
+{% load twitter_tag %}
+{% load humanize %}
+{% get_tweets for "rahmaninov_md" as tweets limit 4 %}
+<!DOCTYPE html>{% load site_age %}
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="google-site-verification"
+        content="-RsV6BWKitRuBVr6OoNYWuoSDPs5pMYFzu6iVumhFTI"/>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <meta name="description"
+        content="Сайт Кишинёвского лицея-интерната им. С. Рахманинова"/>
+  <meta name="keywords" content="кишинёв, лицей, интернат, рахманинов, музыка"/>
+  {% block links %} {% endblock %}
+  <title>{% block title %}{% endblock %}</title>
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-34691824-1']);
+    _gaq.push(['_trackPageview']);
+    (function () {
+      var ga = document.createElement('script');
+      ga.type = 'text/javascript';
+      ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+  <script type="text/javascript">
+    STATIC_URL = "{{ STATIC_URL }}";
+  </script>
+  <link rel="stylesheet" href="{{ STATIC_URL }}css/calendar.css">
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu:300&subset=latin,cyrillic'
+        rel='stylesheet'
+        type='text/css'>
+  <link href="{{ STATIC_URL }}img/favicon.ico"
+        rel="icon"
+        type="image/png"
+        media="all">
+  <noscript>
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/skel-noscript.css"/>
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css"/>
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/style-noscript.css"/>
+  </noscript>
+  <!--[if lte IE 8]><link rel="stylesheet" href="{{ STATIC_URL }}css/ie8.css" />
+  <![endif]-->
+  <!--[if lte IE 8]><script src="{{ STATIC_URL }}js/lib/html5shiv.js"></script>
+  <![endif]-->
+  <script src="{{ STATIC_URL }}js/lib/jquery-1.10.2.min.js"></script>
+  <script src="{{ STATIC_URL }}js/lib/jquery.dropotron.js"></script>
+  <script src="{{ STATIC_URL }}js/lib/skel.min.js"></script>
+  <script src="{{ STATIC_URL }}js/lib/skel-panels.min.js"></script>
+  <script src="{{ STATIC_URL }}js/lib/jquery.eventCalendar.js"></script>
+  <script src="{{ STATIC_URL }}js/init.js"></script>
+  <script src="{{ STATIC_URL }}js/flickr-init.js"></script>
+  {% block scripts %}{% endblock %}
+</head>
+<body class="{% block page_type %}{% endblock %}">
+<!-- Header -->
+<div id="header">
+  <!-- Inner -->
+  <div class="inner">
+    {% block header %}{% endblock %}
+  </div>
+  <!-- Nav -->
+  <nav id="nav">
+    <ul>
+      <li><a href="{% url "index" %}">Главная</a></li>
+      <li>
+        <span>Лицей</span>
+        <ul>
+          <li><a href="{% url "staff" %}">Коллектив</a></li>
+          <li><a href="{% url "admission" %}">Поступление</a></li>
+          <li><a href="{% url "history" %}">Статьи</a></li>
+          <li><a href="{% url "graduates" %}">Выпускники</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Учащиеся</span>
+        <ul>
+          <li>
+            <span>Коллективы &hellip;</span>
+            <ul>
+              <li><a href="{% url "barocco" %}">Барокко</a></li>
+              <!-- <li><a href="#">Камерный ансамбль</a></li> -->
+              <!-- <li><a href="#">Духовой оркестр</a></li> -->
+            </ul>
+          </li>
+          <li>
+            <span>Достижения &hellip;</span>
+            <ul>
+              <li><a href="{% url "laureates" %}">Лауреаты</a></li>
+              <li><a href="{% url "first_achievements" %}">Первые успехи</a></li>
+              <li><a href="{% url "olympiads" %}">Олимпиады</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="{% url "index" %}#gallery" class="scrolly">Галерея</a></li>
+      <li><a href="{% url "index" %}#calendar" class="scrolly">Календарь</a></li>
+      <li><a href="{% url "contacts" %}" class="scrolly">Контакты</a></li>
+    </ul>
+  </nav>
+</div>
+
+{% block base_content %}{% endblock %}
+
+<div id="back">
+  <a href="#nav" class="button scrolly">Начало</a>
+</div>
+
+<!-- Footer -->
+<div id="footer">
+  <div class="container">
+    <div class="row">
+
+      <!-- Tweets -->
+      <section class="8u">
+        <header>
+          <h2 class="icon icon-twitter circled"><span>Tweets</span></h2>
+        </header>
+
+        <ul class="divided">
+          {% for tweet in tweets %}
+          <li>
+            <article class="tweet">
+             {{ tweet.html|safe }}
+              <span class="timestamp">{{ tweet.datetime|naturaltime }}</span>
+            </article>
+          </li>
+          {% endfor %}
+        </ul>
+      </section>
+
+      <!-- Photos -->
+      <section class="4u" id="footer-photos">
+        <header>
+          <h2 class="icon icon-camera circled"><span>Фотографии</span></h2>
+        </header>
+        <div class="row quarter no-collapse">
+          <div class="6u">
+            <a href="http://www.flickr.com/photos/65968911@N08/collections/72157631963699509/"
+               class="image full"><img src="{{ STATIC_URL }}img/main/pic10.jpg"
+                                       alt=""/></a>
+          </div>
+          <div class="6u">
+            <a href="http://www.flickr.com/photos/65968911@N08/collections/72157631963699509/"
+               class="image full"><img src="{{ STATIC_URL }}img/main/pic11.jpg"
+                                       alt=""/></a>
+          </div>
+        </div>
+        <div class="row quarter no-collapse">
+          <div class="6u">
+            <a href="http://www.flickr.com/photos/65968911@N08/collections/72157631963699509/"
+               class="image full"><img src="{{ STATIC_URL }}img/main/pic12.jpg"
+                                       alt=""/></a>
+          </div>
+          <div class="6u">
+            <a href="http://www.flickr.com/photos/65968911@N08/collections/72157631963699509/"
+               class="image full"><img src="{{ STATIC_URL }}img/main/pic13.jpg"
+                                       alt=""/></a>
+          </div>
+        </div>
+        <div class="row quarter no-collapse">
+          <div class="6u">
+            <a href="http://www.flickr.com/photos/65968911@N08/collections/72157631963699509/"
+               class="image full"><img src="{{ STATIC_URL }}img/main/pic14.jpg"
+                                       alt=""/></a>
+          </div>
+          <div class="6u">
+            <a href="http://www.flickr.com/photos/65968911@N08/collections/72157631963699509/"
+               class="image full"><img src="{{ STATIC_URL }}img/main/pic15.jpg"
+                                       alt=""/></a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+    <hr/>
+    <div class="row">
+      <div class="12u">
+
+        <!-- Contact -->
+        <section class="contact">
+          <header>
+            <h3>Контакты</h3>
+          </header>
+          <p>Свяжитесь с нами на Facebook, Twitter, Google+. <br/>
+            Пишите нам на: <a href="mailto:liceu-rahmaninov@rambler.ru">liceu-rahmaninov@rambler.ru</a>
+          </p>
+          <ul class="icons">
+            <li><a href="https://twitter.com/rahmaninov_md"
+                   class="icon icon-twitter"><span>Twitter</span></a>
+            </li>
+            <li><a href="https://plus.google.com/116866253917822516068"
+                   class="icon icon-google-plus"><span>Google+</span></a></li>
+            <li><a href="https://www.youtube.com/user/rahmaninovChannel"
+                   class="icon icon-youtube"><span>YouTube</span></a></li>
+            <li>
+              <a href="http://www.flickr.com/photos/65968911@N08/collections/72157631963699509/"
+                 class="icon icon-flickr"><span>Flickr</span></a></li>
+          </ul>
+        </section>
+
+        <!-- Copyright -->
+
+        <div class="copyright">
+          <ul class="menu">
+            <li>Идея: <a href="{% url 'teacher' 24 %}">Янчева Н. К.</a></li>
+            <li>Редактор: <a href="{% url 'teacher' 78 %}">Янчева А. И.</a></li>
+            <li>Разработчик:
+              <a href="http://www.linkedin.com/pub/vladimir-nani/37/934/349/">Нани
+                В. Ю.</a></li>
+          </ul>
+        </div>
+
+        <div class="copyright">
+          <ul class="menu">
+            <li>Powered by <a href="http://www.djangoproject.com/">Django</a></li>
+            <li>&copy; Лицей им. С. Рахманинова.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+/*********************************************************************************/
+/* Footer                                                                        */
+/*********************************************************************************/
+
+#footer {
+    position: relative;
+    overflow: hidden;
+    padding: 6em 0 6em 0;
+    background: #2b252c;
+    color: #fff;
+    .icon.circled {
+        background: #fff;
+        color: #2b252c;
+    }
+    header {
+        text-align: center;
+        cursor: default;
+    }
+    h2, h3, h4, h5, h6 {
+        color: #fff;
+    }
+    .contact {
+        text-align: center;
+        p {
+            text-align: center;
+            margin: 0 0 3em 0;
+        }
+    }
+    .copyright {
+        text-align: center;
+        color: rgba(128, 128, 128, 0.75);
+        font-size: 0.8em;
+        cursor: default;
+        a {
+            color: rgba(128, 128, 128, 0.75);
+            &:hover {
+                color: rgba(212, 212, 212, 0.85);
+            }
+        }
+    }
+}

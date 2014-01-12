@@ -1,0 +1,47 @@
+{% extends "base/left-sidebar.html" %}
+{% block title %}История лицея{% endblock %}
+
+{% block content %}
+  <div class="row" id="article">
+    <div class="4u" id="sidebar">
+      <hr class="first"/>
+      <section>
+        <header>
+          <h3><a href="#">Статьи:</a></h3>
+        </header>
+        <ul>
+          <li>
+            <a href="{% url "history" %}">
+              История лицея
+            </a>
+          </li>
+          <li>
+            <a href="{% url "library" %}">
+              Библиотека лицея
+            </a>
+          </li>
+          <li>
+            <a href="{% url "psycho" %}">
+              Психологическая подготовка музыканта
+            </a>
+          </li>
+          <li>
+            <a href="{% url "problem" %}">
+              «Трудный» ребенок в школе
+            </a>
+          </li>
+          <li>
+            <a href="{% url "reasons" %}">
+              Быть или не быть?
+            </a>
+          </li>
+        </ul>
+      </section>
+    </div>
+    <div class="8u skel-cell-mainContent" id="content">
+      <article id="main">
+        {% block article_content %} {% endblock %}
+      </article>
+    </div>
+  </div>
+{% endblock %}

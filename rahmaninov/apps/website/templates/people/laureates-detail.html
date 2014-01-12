@@ -1,0 +1,49 @@
+{% extends "base/right-sidebar.html" %}
+{% block title %}{{ laureate }}{% endblock %}{% load short_name %}
+
+{% block content %}
+  <div class="row">
+    <header>
+      <h2>{{ laureate }}</h2>
+    </header>
+  </div>
+  <div class="row" id="laureate">
+    <div class="6u">
+      <figure class="image featured" title="{{ laureate }}">
+        <img alt="{{ laureate }}"
+             src="{{ MEDIA_URL }}{{ laureate.picture }}">
+      </figure>
+    </div>
+
+    <div class="6u">
+      <p>
+        {% if laureate.pupil.year_born %}<span class="blue">
+          {{ laureate.pupil.year_born }}</span> года рождения.<br>{% endif %}
+        Специальность:<br><span class="blue"> {{ laureate.pupil.subject }}</span><br>
+        Преподаватель:<br><a href="{% url "teacher" laureate.pupil.teacher.id %}"
+                             class="teacher">
+        {{ laureate.pupil.teacher }}</a><br></p>
+
+      {% if laureate.details %}<p>{{ laureate.details|safe }}</p>{% endif %}
+
+
+    </div>
+  </div>
+  <div class="row" id="competitions">
+    <div class="12u">
+      {% for competition in competitions %}
+        <div class="row">
+          <div class="3u">{{ competition.get_position_display }}</div>
+          <div class="6u">{{ competition.competition.name }}
+            {% if competition.details %}
+              {{ competition.details }}
+            {% endif %}
+          </div>
+          <div class="3u">
+            <span class="green">{{ competition.competition.location.country }} {{ competition.year }}</span>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

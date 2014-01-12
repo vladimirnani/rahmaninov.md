@@ -1,0 +1,131 @@
+@import "partials/font-awesome/font-awesome-ie7";
+
+/*********************************************************************************/
+/* Basic                                                                         */
+/*********************************************************************************/
+
+a {
+    border-bottom: solid 1px #ddd;
+}
+
+hr {
+    border-top: solid 1px #777;
+    border-bottom: solid 1px #777;
+}
+
+.timestamp {
+    color: #777;
+}
+
+/* Lists */
+
+ul {
+    &.divided li {
+        border-top: solid 1px #777;
+    }
+    &.menu li {
+        border-left: solid 1px #777;
+    }
+    &.icons {
+        background: #333;
+        -ms-behavior: url('css/PIE.htc');
+    }
+}
+
+/* Buttons */
+
+.button, .icon.circled {
+    -ms-behavior: url('css/PIE.htc');
+}
+
+/*********************************************************************************/
+/* Header                                                                        */
+/*********************************************************************************/
+
+#header {
+    -ms-behavior: url('css/backgroundsize.min.htc');
+}
+
+/*********************************************************************************/
+/* Nav                                                                           */
+/*********************************************************************************/
+
+#nav > ul {
+    &:before, &:after {
+        border-top: solid 1px #777;
+        border-bottom: solid 1px #777;
+    }
+    > li {
+        -ms-behavior: url('css/PIE.htc');
+        &.active {
+            border-color: #999;
+        }
+    }
+}
+
+.dropotron {
+    background: #fff;
+    -ms-behavior: url('css/PIE.htc');
+    li {
+        border-color: #eee;
+        padding-right: 1em;
+        color: #5b5b5b;
+    }
+}
+
+.dropotron-level-0 {
+    margin-top: 1em;
+}
+
+/*********************************************************************************/
+/* Carousel                                                                      */
+/*********************************************************************************/
+
+.carousel {
+    .forward, .backward {
+        border-radius: 100%;
+        background-color: #483949;
+        width: 7em;
+        height: 7em;
+        margin-top: -3.5em;
+        border-radius: 100%;
+        -ms-behavior: url('css/PIE.htc');
+    }
+    .forward {
+        right: -3.5em;
+    }
+    .backward {
+        left: -3.5em;
+    }
+    .forward:before, .backward:before {
+        display: none;
+    }
+}
+
+/*********************************************************************************/
+/* Footer                                                                        */
+/*********************************************************************************/
+
+#footer {
+    ul {
+        &.divided li, &.menu li {
+            border-color: #3B373C;
+        }
+    }
+    hr {
+        border-color: #3B373C;
+    }
+    .icons {
+        background: #2F2930;
+    }
+    .copyright {
+        color: #777;
+        a {
+            color: #aaa;
+            border: 0;
+            &:hover {
+                color: #ccc;
+            }
+        }
+    }
+}

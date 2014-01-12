@@ -1,0 +1,98 @@
+/*********************************************************************************/
+/* Carousel                                                                      */
+/*********************************************************************************/
+
+.carousel {
+    position: relative;
+    overflow: hidden;
+    padding: 2em 0 2em 0;
+    .forward, .backward {
+        position: absolute;
+        top: 50%;
+        width: 6em;
+        height: 12em;
+        margin-top: -6em;
+        cursor: pointer;
+    }
+    .forward {
+        right: 0;
+    }
+    .backward {
+        left: 0;
+    }
+    .forward:before, .backward:before {
+        content: '';
+        display: block;
+        width: 6em;
+        height: 6em;
+        border-radius: 100%;
+        background-color: rgba(72, 57, 73, 0.5);
+        position: absolute;
+        top: 50%;
+        margin-top: -3em;
+        @include transition(background-color 0.35s ease-in-out);
+        -webkit-backface-visibility: hidden;
+    }
+    .forward:after, .backward:after {
+        content: '';
+        width: 3em;
+        height: 3em;
+        position: absolute;
+        top: 50%;
+        margin: -1.5em 0 0 0;
+        background: url('../img/arrow.svg') no-repeat center center;
+    }
+    .forward:after {
+        right: -0.25em;
+    }
+    .backward:after {
+        left: -0.25em;
+        -moz-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -ms-transform: scaleX(-1);
+        transform: scaleX(-1);
+    }
+    .forward:before {
+        right: -3em;
+    }
+    .backward:before {
+        left: -3em;
+    }
+    .forward:hover:before, .backward:hover:before {
+        background-color: rgba(239, 131, 118, 0.75);
+    }
+    .reel {
+        white-space: nowrap;
+        position: relative;
+        -webkit-overflow-scrolling: touch;
+        padding: 0 2em 0 2em;
+    }
+    article {
+        display: inline-block;
+        width: 18em;
+        background: #fff;
+        text-align: center;
+        padding: 0 1em 3em 1em;
+        margin: 0 2em 0 0;
+        white-space: normal;
+        opacity: 1.0;
+
+        @include transition(opacity 0.75s ease-in-out);
+        
+        &.loading {
+            opacity: 0;
+        }
+        .image {
+            position: relative;
+            left: -1em;
+            top: 0;
+            width: auto;
+            margin-right: -2em;
+            margin-bottom: 3em;
+        }
+        p {
+            text-align: center;
+        }
+    }
+}

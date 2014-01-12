@@ -1,0 +1,66 @@
+{% extends "base/right-sidebar.html" %}
+{% block title %}Выпуски лицея{% endblock %}
+
+{% block links %}
+  <link href="{{ STATIC_URL }}css/paginate.css"
+        rel="stylesheet"
+        type="text/css"
+        media="all">
+{% endblock %}
+
+{% block scripts %}
+  <script type="text/javascript"
+          src="{{ STATIC_URL }}js/lib/jquery.paginate.js"></script>
+  <script type="text/javascript">
+    $(window).load(function () {
+      $("#pagination").paginate({
+        count: {% now "y" %} +10,
+        start: 1,
+        border: false,
+        text_color: '#333',
+        background_color: 'none',
+        text_hover_color: '#9E0B0B',
+        background_hover_color: 'none',
+        images: false,
+        mouse: 'press',
+        onChange: function (page) {
+          $('._current', '#graduates').removeClass('_current').hide();
+          $('#p' + page).addClass('_current').show("slow");
+        }
+      });
+    });
+  </script>
+{% endblock %}
+
+
+{% block content %}
+  <header>
+    <h2>Выпуски лицея</h2>
+  </header>
+
+  <div id="graduates">
+    <div id="pagination"></div>
+    {% regroup object_list|dictsort:"year" by year as year_list %}
+    {% for year in year_list %}
+      <div id="p{{ year.grouper }}"
+           class="{% if forloop.first %}_current{% endif %} graduates_year row"
+           style="{% if not forloop.first %}display:none;{% endif %}">
+        <div class="8u skel-cell-mainContent" id="content">
+          <figure class="image featured" title="{{ teacher }}">
+            <img alt="Виньетка"
+                 src="{{ MEDIA_URL }}img/graduates/{{ year.grouper }}.jpg">
+          </figure>
+        </div>
+        <div class="4u" id="sidebar">
+          <ul id="list">
+            {% for item in year.list %}
+              <li>{{ item.name }} {% if item.country %}<strong class="blue">
+                ({{ item.country }})</strong>{% endif %}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}
+

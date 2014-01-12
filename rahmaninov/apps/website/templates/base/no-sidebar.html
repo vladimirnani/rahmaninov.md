@@ -1,0 +1,18 @@
+{% extends "base/base.html" %}
+
+{% block header %}
+  <header>
+    <h1><a href="#" id="logo">Лицей им. С.&nbsp;Рахманинова</a></h1>
+  </header>
+{% endblock %}
+
+{% block base_content %}
+<div class="wrapper style1">
+  <div class="container">
+   {% block content %}{% endblock %}
+  </div>
+</div>
+{% endblock %}
+
+{% block page_type %} no-sidebar {% endblock %}
+

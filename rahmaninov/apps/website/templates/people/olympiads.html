@@ -1,0 +1,35 @@
+﻿{% extends "base/no-sidebar.html" %}
+{% block title %}Участники олимпиад{% endblock %} 
+
+{% block content %}           
+<section id="olympiads">
+	<header><h2>Участники олимпиад</h2></header>
+	{% for name, olympiads in laureates.items %}
+	<article id="main">
+		<header><h3 class="green"><strong>{{ name }}</strong></h3></header>
+		<table id="newspaper-a" summary="Участники олимпиад">
+			<thead>
+				<tr>
+				   <th scope="col">Олимпиада</th>
+				   <th scope="col">Предмет</th>
+				   <th scope="col">Год</th>
+				   <th scope="col">Место</th>
+				   <th scope="col">Преподаватель</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for olympiad in olympiads %}
+				<tr>
+					<td>{{ olympiad.olympiad.get_olympiad_type_display }}</td>
+					<td class="width150 blue"><strong>{{ olympiad.olympiad.subject }}</strong></td>
+					<td>{{ olympiad.year }}</td>
+					<td class="width150 red">{{ olympiad.get_position_display }}{% if olympiad.position == 1 %}<img src="{{ STATIC_URL }}img/maps/winners_cup.png" class="left"/>{% endif %}</td>
+					<td class="width250"><a href="{% url "teacher" olympiad.teacher.id %}" class="teacher">{{olympiad.teacher}}</a></td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</article>
+	{% endfor %}
+</section>
+{% endblock %} 

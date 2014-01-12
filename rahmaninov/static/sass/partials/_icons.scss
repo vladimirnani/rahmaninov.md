@@ -1,0 +1,52 @@
+/*********************************************************************************/
+/* Icons                                                                         */
+/* Powered by Font Awesome by Dave Gandy | http://fontawesome.io                 */
+/* Licensed under the SIL OFL 1.1 (font), MIT (CSS)                              */
+/*********************************************************************************/
+
+.icon {
+  text-decoration: none;
+  span {
+    display: none;
+  }
+  &.circled {
+    position: relative;
+    display: inline-block;
+    background: #2b252c;
+    color: #fff;
+    border-radius: 100%;
+    width: 3.5em;
+    height: 3.5em;
+    line-height: 3.5em;
+    text-align: center;
+    font-size: 1em;
+    &:before {
+      font-size: 2em;
+    }
+  }
+}
+
+header .icon.circled {
+  margin: 0 0 2em 0;
+}
+
+.icon:before {
+  font-family: FontAwesome;
+  font-size: 1.25em;
+  text-decoration: none;
+  font-weight: normal;
+  font-style: normal;
+  -webkit-text-rendering: optimizeLegibility;
+  -moz-text-rendering: optimizeLegibility;
+  -ms-text-rendering: optimizeLegibility;
+  -o-text-rendering: optimizeLegibility;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -ms-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+
+
+@import "partials/font-awesome/font-awesome";
